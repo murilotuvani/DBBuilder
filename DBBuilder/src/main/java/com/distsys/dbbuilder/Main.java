@@ -692,7 +692,8 @@ public class Main {
                 || tipou.equals("SMALLDATETIME")) {
             return "Date";
         }
-        if (tipou.equals("INT") || tipou.equals("SMALLINT")) {
+        if (tipou.equals("INT") || tipou.equals("SMALLINT")
+                || tipou.equals("INT UNSIGNED")) {
             if (coluna.isNullable()) {
                 return "Integer";
             } else {
