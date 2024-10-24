@@ -680,7 +680,7 @@ public class Main {
     private static String tipoSqlParaJava(Coluna coluna) {
         String tipou = coluna.getTipo().toUpperCase();
         int tamanho = coluna.getTamanho();
-        if (tipou.equals("BIT") || tipou.equals("TINYINT")) {
+        if (tipou.equals("BIT") || tipou.equals("TINYINT") || tipou.equals("TINYINT UNSIGNED")) {
             return "boolean";
         }
         if (tipou.contains("BINARY") || tipou.equals("IMAGE")
@@ -692,7 +692,7 @@ public class Main {
                 || tipou.equals("SMALLDATETIME")) {
             return "Date";
         }
-        if (tipou.equals("INT") || tipou.equals("SMALLINT")
+        if (tipou.equals("INT") || tipou.equals("SMALLINT") || tipou.equals("SMALLINT UNSIGNED")
                 || tipou.equals("INT UNSIGNED")) {
             if (coluna.isNullable()) {
                 return "Integer";
@@ -701,6 +701,7 @@ public class Main {
             }
         }
         if (tipou.equals("BIGINT")
+                || tipou.equals("BIGINT UNSIGNED")
                 //|| (tipou.equals("NUMBER") && (tamanho==0 || tamanho==1))) {
                 || tipou.equals("NUMBER")) {
             if (coluna.isNullable()) {
